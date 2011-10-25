@@ -1,5 +1,5 @@
 Inventory::Application.routes.draw do
-  get "users/new"
+  resources :users # Listing 6.26
 
   match '/signup',  :to => 'users#new'
   
