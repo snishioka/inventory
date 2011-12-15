@@ -10,7 +10,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111027024323) do
+ActiveRecord::Schema.define(:version => 20111118031938) do
+
+  create_table "items", :force => true do |t|
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "fas"
+    t.string   "section"
+    t.string   "serial_no"
+    t.string   "type"
+    t.string   "model"
+    t.string   "processor"
+    t.string   "memory"
+    t.string   "os"
+    t.string   "japanese"
+    t.string   "office_2000"
+    t.string   "star"
+    t.string   "notes"
+    t.string   "remarks"
+    t.datetime "assign_date"
+    t.string   "ed_check"
+    t.string   "po"
+    t.integer  "item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "items", ["last_name", "first_name", "serial_no"], :name => "index_items_on_last_name_and_first_name_and_serial_no"
 
   create_table "users", :force => true do |t|
     t.string   "name"

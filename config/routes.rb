@@ -1,16 +1,20 @@
 Inventory::Application.routes.draw do
-  get "sessions/new"
-
-  resources :users # Listing 6.26
-  resources :sessions, :only => [:new, :create, :destroy]
+  # 6.3.3 adding resources :users to the routes.rb file (Listing 6.26) 
+  # automatically ensures that our Rails application responds to the 
+  # RESTful URLs from Table 6.2.
+  resources :users  
+  resources :sessions,	:only => [:new, :create, :destroy]
+  resources :items, 	:only => [:create, :destroy]
 
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-  
+    
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'
+  
+  match '/items',	:to => 'items#index'
   
   root :to => 'pages#home'
 
